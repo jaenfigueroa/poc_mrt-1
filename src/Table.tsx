@@ -1,6 +1,9 @@
 import { useMemo } from 'react'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { MaterialReactTable } from 'material-react-table'
 import { type MRT_ColumnDef } from 'material-react-table' // If using TypeScript (optional, but recommended)
+import { ListItemIcon, ListItemText, MenuItem, Typography } from '@mui/material'
+import { ContentCut } from '@mui/icons-material'
 
 // Si estas usando TypeScript, crea un tipo basado en la forma de tus datos que puedes usar en tus definiciones de columna
 interface YourDataType {
@@ -11,6 +14,7 @@ interface YourDataType {
   age: number
 }
 
+// MI DATA
 // Un ejemplo más complejo con datos anidados
 const data: YourDataType[] = [
   {
@@ -37,12 +41,21 @@ const data: YourDataType[] = [
 ]
 
 const Table = () => {
+  // CONFIGURACION SE LA TABLA
   //un ejemplo más complejo con datos anidados
   //si usa TypeScript, puede usar el tipo MRT_ColumnDef para escribir fuertemente sus columnas (recomendado)
   const columns = useMemo<MRT_ColumnDef<YourDataType>[]>(
     () => [
       {
         header: 'First Name',
+        Header: (
+          <MenuItem>
+            <ListItemIcon>
+              <AccountCircleIcon />
+            </ListItemIcon>
+            <ListItemText> Fisrt Name</ListItemText>
+          </MenuItem>
+        ), //PERSONALIZAR EL HEADER <--- PUEDE SER UN COMPONENTE REACT
         accessorKey: 'name.firstName', //usando la notación de puntos accessorKey para acceder a datos anidados
         //PERSONALIZAR EL ESTILO DE LA CELDA
         /* HEADER */
