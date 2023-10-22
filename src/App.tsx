@@ -1,4 +1,4 @@
-import Table from './Table'
+import Table from './Table/Table'
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material'
 
 const darkTheme = createTheme({
