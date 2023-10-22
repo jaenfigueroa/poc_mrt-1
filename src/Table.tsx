@@ -2,8 +2,7 @@ import { useMemo } from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { MaterialReactTable } from 'material-react-table'
 import { type MRT_ColumnDef } from 'material-react-table' // If using TypeScript (optional, but recommended)
-import { ListItemIcon, ListItemText, MenuItem, Typography } from '@mui/material'
-import { ContentCut } from '@mui/icons-material'
+import { ListItemIcon, ListItemText, MenuItem } from '@mui/material'
 
 // Si estas usando TypeScript, crea un tipo basado en la forma de tus datos que puedes usar en tus definiciones de columna
 interface YourDataType {
@@ -48,6 +47,7 @@ const Table = () => {
     () => [
       {
         header: 'First Name',
+        // FORMA ALTERNATIVA, PARA INCLUIR HTML Y NO SOLO TEXTO , SI NO AGREGAR ICONOS
         Header: (
           <MenuItem>
             <ListItemIcon>
@@ -59,6 +59,7 @@ const Table = () => {
         accessorKey: 'name.firstName', //usando la notación de puntos accessorKey para acceder a datos anidados
         //PERSONALIZAR EL ESTILO DE LA CELDA
         /* HEADER */
+        // LAS 2 LINEAS PARA ARRASTRAR Y SOLTA DE LA CELDA
         muiTableHeadCellProps: {
           sx: {
             color: '#FF729F',
@@ -71,15 +72,16 @@ const Table = () => {
             },
           },
         },
+        // LOS 3 PUNTOS DE LA CELDA
         muiTableHeadCellColumnActionsButtonProps: {
           sx: { color: 'orange' },
         },
+        muiTableHeadCellFilterTextFieldProps: { sx: { color: 'gray', background: '#A682FF' } }, // BUSCADOR DE LA CELDA
         muiTableHeadCellDragHandleProps: { sx: { color: '#A682FF' } },
         muiTableHeadCellFilterCheckboxProps: { sx: { color: 'pink' } },
-        muiTableHeadCellFilterTextFieldProps: { sx: { color: 'gray', background: '#A682FF' } },
-        muiTableHeadCellFilterSliderProps: { sx: { color: 'brown' }, background: '#A682FF' },
+        // muiTableHeadCellFilterSliderProps: { sx: { color: 'brown' }, background: '#A682FF' },
         /* BODY */
-        muiTableBodyCellProps: { sx: { color: '#81F4E1', background: 'brown' } },
+        muiTableBodyCellProps: { sx: { color: '#81F4E1', background: 'brown' } }, // ELEMEENTOS DE LA COLUMNA
         muiTableBodyCellCopyButtonProps: { sx: { color: 'yellow' } },
         muiTableBodyCellEditTextFieldProps: { sx: { color: 'red' } },
         muiTableBodyCellEditSelectProps: { sx: { color: 'green' } },
